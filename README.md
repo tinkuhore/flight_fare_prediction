@@ -24,3 +24,37 @@ To acivate the environment
 source .venv/bin/activate
 ```
 
+
+### Git commands
+
+Configuration
+```
+git config --global user.name "<your name>"
+git config --global user.email "<mail id registered with github>"
+```
+Check status
+```
+git status
+```
+Check logs
+```
+git log
+```
+Add all new or modified files
+```
+git add .
+```
+Add or update specific file
+```
+git add <file name>
+```
+Commit changes
+```
+git commit -m "<commit message>"
+```
+Push the commited changes
+```
+git push <remote> <branch>
+```
+
+
