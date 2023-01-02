@@ -4,3 +4,6 @@ numpy
 scikit-learn
 Flask-Cors
 matplotlib
+seaborn
+statsmodels
+openpyxl
