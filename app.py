@@ -42,10 +42,7 @@ def predict():
             entry = {"Airline" :result.keys(), "Fare (INR)":result.values()}
             data = pd.DataFrame(data=entry)
             data.sort_values(by="Fare (INR)", ascending=False, inplace=True)
-            # text = ""
-            # for i,j in result.items():
-            #     text += f"\n\n\n\n\n\n {i} --> INR{j} \n\n\n\n\n\n"
-            prediction_text = f"Predicted Flight Fare for available Airlines" # {text}"
+            prediction_text = f"Predicted Flight Fare for available Airlines" 
         
         elif type(result) is float:
             prediction_text = f"Predicted Flight Fare is INR {result}"
@@ -55,7 +52,7 @@ def predict():
             prediction_text="Failed to Predict."
             data=pd.DataFrame()
 
-        logging.info(f"Final result : {prediction_text}")
+        
         logging.info(f"******************** END *************************")
 
         return render_template("home.html", Prediction_Text=prediction_text, data=data.to_html(col_space=200, index=False, justify="left", border=0))
