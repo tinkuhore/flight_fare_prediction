@@ -58,3 +58,27 @@ git push <remote> <branch>
 ```
 
 
+### Deployment Steps
+
+##### The WebApp was deployed to AWS Elastic Beanstalk
+
+
+- Create a new folder named ".ebextensions"
+
+- In that folder create a file <any_name>.config (* Make sure the extension is .config)
+
+- Above file should contain the following
+```
+option_settings:
+  "aws:elasticbeanstalk:container:python":
+    WSGIPath: <main python file name>:<flask app name>
+```
+
+- Make a zip file with all necessary files and folder
+
+- Login to AWS
+
+- Search for *Elastic Beanstalk* and click *Create Application*
+
+- Give any valid name, select platform and upload the zip file. Finally click on **Create Application**.
+
