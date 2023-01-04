@@ -1,126 +1,324 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="/static/css/style.css" /> -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        background-image: linear-gradient(
+          to right bottom,
+          rgba(126, 213, 111, 0.8),
+          rgba(40, 180, 133, 0.8)
+        );
+      }
+      .navbar-brand {
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+        font-size: 3rem;
+        color: black;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        height: 100vh;
+        width: 100%;
+      }
+      .col-sm-6 {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      /* .card-body {
+} */
+      .card-title {
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+        font-size: large;
+        font-weight: 500;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+      }
+      .input {
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        font-size: large;
+        border: 0.5rem solid #eee;
+        box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.06);
+        border-radius: 0.5rem;
+      }
+      .select-option {
+        border: 1rem solid black;
+      }
+      .input-select-option {
+        width: 20rem;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        font-size: large;
+        border: 1rem solid #eee;
+        box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.06);
+        border-radius: 0.5rem;
+      }
+      button {
+        background: none;
+        border: 3px solid #fff;
+        border-radius: 5px;
+        color: black;
+        display: block;
+        font-size: 1.8em;
+        font-weight: bold;
+        margin: 0.5rem auto;
+        padding: 2rem 3rem;
+        position: relative;
+        text-transform: uppercase;
+      }
+
+      button::before,
+      button::after {
+        background: #fff;
+        content: "";
+        position: absolute;
+        z-index: -1;
+      }
+
+      button:hover {
+        color: #2ecc71;
+      }
+
+      .btn-5 {
+        overflow: hidden;
+      }
+
+      .btn-5::after {
+        /*background-color: #f00;*/
+        height: 100%;
+        left: -55%;
+
+        top: 0;
+        transform: skew(50deg);
+        transition-duration: 0.6s;
+        transform-origin: top left;
+        width: 0;
+      }
+
+      .btn-5:hover:after {
+        height: 100%;
+        width: 155%;
+      }
+      .prediction_text {
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+        font-size: 2.5rem;
+        font-weight: bolder;
+        /* font-weight: 500; */
+        margin-bottom: 1rem;
+        margin-top: 2.5rem;
+        text-align: center;
+        /* height: 20rem;
+        width: 30rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto; */
+
+      }
+      .tinku_hore {
+        font-family: sans-serif, Arial, Helvetica, sans-serif;
+        font-size: small;
+        font-weight: 500;
+        background-color: #71e58e;
+        /* margin-bottom: 2rem; */
+        /* margin-top: 2rem; */
+        text-align: center;
+       
+      }
+      .data_safe{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        padding: 3rem;
+      }
+    </style>
     <title>Flight Fare Prediction</title>
-</head>
-<body>
+  </head>
+
+  <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">FLIGHT FARE PREDICTION</a>
-            </div>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">FLIGHT FARE PREDICTION</a>
         </div>
+      </div>
     </nav>
 
-    <br>   
+    <br />
     <div class="container">
-        <form action="/predict" method="post">  
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Departure Date</h5>
-                            <!-- Departure -->
-                            <input type="datetime-local" name="Dep_Time" id="Dep_Time" min="00:00" max="24:00" required="required">
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Arrival Date</h5>
-                            <!-- Arrival -->
-                            <input type="datetime-local" name="Arrival_Time" id="Arrival_Time" min="00:00" max="24:00" required="required">
-                        </div>
-                    </div>
-                </div>
+      <form action="/predict" method="post">
+        <div class="row">
+          <div class="col-sm-6">
+            <!------- Departure --------->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Departure Date</h5>
+                <input
+                  class="input"
+                  type="datetime-local"
+                  name="Dep_Time"
+                  id="Dep_Time"
+                  min="00:00"
+                  max="24:00"
+                  required="required"
+                />
+              </div>
             </div>
-
-            <br>
-            
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Source -->
-                            <h5 class="card-title">Source</h5>
-                            <select name="Source" id="Source" required="required">
-                                <option value="Delhi">Delhi</option>
-                                <option value="Kolkata">Kolkata</option>
-                                <option value="Mumbai">Mumbai</option>
-                                <option value="Chennai">Chennai</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Destination</h5>
-                            <!-- Destination -->
-                            <select name="Destination" id="Destination" required="required">
-                                <option value="Cochin">Cochin</option>
-                                <option value="Delhi">Delhi</option>
-                                <option value="New Delhi">New Delhi</option>
-                                <option value="Hyderabad">Hyderabad</option>
-                                <option value="Kolkata">Kolkata</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+            <!-------------- Arrival ----------->
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Arrival Date</h5>
+                <!-- Arrival -->
+                <input
+                  class="input"
+                  type="datetime-local"
+                  name="Arrival_Time"
+                  id="Arrival_Time"
+                  min="00:00"
+                  max="24:00"
+                  required="required"
+                />
+              </div>
             </div>
+          </div>
+        </div>
 
-            <br>
-            
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Stopage</h5>
-                            <!-- Total Stops -->
-                            <select name="stops" required="required">
-                                <option value="0">Non-Stop</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Which Airline you want to travel?</h5>
-                            <!-- Airline -->
-                            <select name="airline" id="airline" required="required">
-                                <option value="Any">Any</option>
-                                <option value="Jet Airways">Jet Airways</option>
-                                <option value="IndiGo">IndiGo</option>
-                                <option value="Air India">Air India</option>
-                                <option value="Multiple carriers">Multiple carriers</option>
-                                <option value="SpiceJet">SpiceJet</option>
-                                <option value="Vistara">Vistara</option>
-                                <option value="Air Asia">Air Asia</option>
-                                <option value="GoAir">GoAir</option>
-                                <option value="Multiple carriers Premium economy">Multiple carriers Premium economy
-                                </option>
-                                <option value="Jet Airways Business">Jet Airways Business</option>
-                                <option value="Vistara Premium economy">Vistara Premium economy</option>
-                                <option value="Trujet">Trujet</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>                
+        <br />
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <!-- Source -->
+                <h5 class="card-title">Source</h5>
+
+                <select
+                  name="Source"
+                  id="Source"
+                  required="required"
+                  class="input-select-option"
+                >
+                  <option value="Banglore">Banglore</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Chennai">Chennai</option>
+                </select>
+              </div>
             </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Destination</h5>
+                <!-- Destination -->
+                <select
+                  name="Destination"
+                  id="Destination"
+                  required="required"
+                  class="input-select-option"
+                >
+                  <option value="Cochin">Cochin</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="New Delhi">New Delhi</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Kolkata">Kolkata</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
 
-            <br>
-           
-            <!-- Submit -->
-            <input type="submit" value="Submit" class="btn btn-secondary">
-        </form>
+        <br />
 
-        <br>
-        <br>
-        <h3>{{ prediction_text }}</h3>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Stopage</h5>
+                <!-- Total Stops -->
+                <select
+                  name="stops"
+                  required="required"
+                  class="input-select-option"
+                >
+                  <option value="0">Non-Stop</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Which Airline you <br />
+                  want to travel?
+                </h5>
+                <!-- Airline -->
+                <select
+                  name="airline"
+                  id="airline"
+                  required="required"
+                  class="input-select-option"
+                >
+                  <option value="Any">Any</option>
+                  <option value="Jet Airways">Jet Airways</option>
+                  <option value="IndiGo">IndiGo</option>
+                  <option value="Air India">Air India</option>
+                  <option value="Multiple carriers">Multiple carriers</option>
+                  <option value="SpiceJet">SpiceJet</option>
+                  <option value="Vistara">Vistara</option>
+                  <option value="Air Asia">Air Asia</option>
+                  <option value="GoAir">GoAir</option>
+                  <option value="Multiple carriers Premium economy">
+                    Multiple carriers Premium economy
+                  </option>
+                  <option value="Jet Airways Business">
+                    Jet Airways Business
+                  </option>
+                  <option value="Vistara Premium economy">
+                    Vistara Premium economy
+                  </option>
+                  <option value="Trujet">Trujet</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <br>
-        <br>
-        <p>©2023 Tinku Hore</p>
+        <br />
 
+        <!-- Submit -->
+        <button class="btn-5">Submit</button>
+      </form>
+
+      <br />
+      <br />
+      <h3 class="prediction_text">{{ Prediction_Text }}</h3>
+      <h3 class="data_safe">{{ data | safe}}</h3>
+      <br />
+      <br />
+      <footer class="tinku_hore">©2023 Tinku Hore</footer>
     </div>
   </body>
 </html>
