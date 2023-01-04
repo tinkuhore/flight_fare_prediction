@@ -1,5 +1,5 @@
 from flight_fare.credentials import *
-from flight_fare.utils import transform, predict_fare
+from flight_fare.utils import transform_and_predict, predict_fare
 from flight_fare.logger import logging
 from flight_fare.exception import FlightFareException
 from flask import Flask, request, app, jsonify, url_for, render_template
@@ -8,6 +8,7 @@ import pandas as pd
 
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
@@ -33,22 +34,33 @@ def predict():
         data = [x for x in request.form.values()]
 
         logging.info(f"Collected Info : {data}")
-
-        trf_data = transform(data)
-
-        # converting the transformed list into a DataFrame with all feature names as column names
-        model_input = pd.DataFrame(columns=columns)
-        model_input.loc[len(model_input.index)] = trf_data
-        logging.info(f"Input DataFrame shape : {model_input.shape}")
-
-        result = predict_fare(model_input)
         
-        prediction_text = f"Predicted Flight Fare is INR {result}"
-        logging.info(f"Final result : {prediction_text}")
+        result = transform_and_predict(data)
+        
+        
+        if type(result) is dict:
+            entry = {"Airline" :result.keys(), "Fare (INR)":result.values()}
+            data = pd.DataFrame(data=entry)
+            data.sort_values(by="Fare (INR)", ascending=False, inplace=True)
+            # text = ""
+            # for i,j in result.items():
+            #     text += f"\n\n\n\n\n\n {i} --> INR{j} \n\n\n\n\n\n"
+            prediction_text = f"Predicted Flight Fare for available Airlines" # {text}"
+        
+        elif type(result) is float:
+            prediction_text = f"Predicted Flight Fare is INR {result}"
+            data=pd.DataFrame()
+        
+        else:
+            prediction_text="Failed to Predict."
+            data=pd.DataFrame()
 
-        return render_template("home.html", prediction_text=prediction_text)
+        logging.info(f"Final result : {prediction_text}")
+        logging.info(f"******************** END *************************")
+
+        return render_template("home.html", Prediction_Text=prediction_text, data=data.to_html(col_space=200, index=False, justify="left", border=0))
     else:
         return render_template("home.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port=5500, debug=True)
