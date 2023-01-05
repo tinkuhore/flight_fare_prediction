@@ -131,5 +131,5 @@ dmypy.json
 #log files
 logs
 secrets.txt
-.ebextensions
 Dockerfile
+.ebextensions
