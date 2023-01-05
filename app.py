@@ -49,7 +49,7 @@ def predict():
             data=pd.DataFrame()
         
         else:
-            prediction_text="Failed to Predict."
+            prediction_text="No Flights are available."
             data=pd.DataFrame()
 
         
