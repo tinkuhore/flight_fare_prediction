@@ -82,3 +82,5 @@ option_settings:
 
 - Give any valid name, select platform and upload the zip file. Finally click on **Create Application**.
 
+
+### Setup CI/CD using GitHub actions for the application hosted via AWS Elastic BeanStalk
