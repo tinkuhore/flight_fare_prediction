@@ -132,4 +132,3 @@ dmypy.json
 logs
 secrets.txt
 Dockerfile
-.ebextensions
