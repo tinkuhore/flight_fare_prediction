@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Create ZIP deployment package
         run: zip -r deploy_package.zip ./
