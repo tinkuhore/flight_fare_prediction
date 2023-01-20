@@ -1,20 +1,24 @@
 import pickle
-import sys
+import sys, os
 from flight_fare.logger import logging
 from flight_fare.exception import FlightFareException
 
 try:
-       logging.info(f"Loading all models...")
-       gen_model = pickle.load(open('pkl_files/gen_pred_model.pkl', 'rb'))
-       AirAsia = pickle.load(open("pkl_files/AirAsia.pkl", "rb"))
-       IndiGo = pickle.load(open("pkl_files/AirAsia.pkl", "rb"))
-       AirIndia = pickle.load(open("pkl_files/AirIndia.pkl", "rb"))
-       JetAirways = pickle.load(open("pkl_files/JetAirways.pkl", "rb"))
-       SpiceJet = pickle.load(open("pkl_files/SpiceJet.pkl", "rb"))
-       Multiplecarriers = pickle.load(open("pkl_files/Multiplecarriers.pkl", "rb"))
-       GoAir = pickle.load(open("pkl_files/GoAir.pkl", "rb"))
-       Vistara = pickle.load(open("pkl_files/Vistara.pkl", "rb"))
-       logging.info("Loading Conplete.")
+       logging.info(f"Loading all latest models...")
+       list_dir = os.listdir("saved_models")
+       latest_dir_num = max(list_dir)
+       latest_models_dir = os.path.join("saved_models",f"{latest_dir_num}")
+       
+       gen_model = pickle.load(open(os.path.join(latest_models_dir,'gen_pred_model.pkl'), 'rb'))
+       AirAsia = pickle.load(open(os.path.join(latest_models_dir,"AirAsia.pkl"), "rb"))
+       IndiGo = pickle.load(open(os.path.join(latest_models_dir,"AirAsia.pkl"), "rb"))
+       AirIndia = pickle.load(open(os.path.join(latest_models_dir,"AirIndia.pkl"), "rb"))
+       JetAirways = pickle.load(open(os.path.join(latest_models_dir,"JetAirways.pkl"), "rb"))
+       SpiceJet = pickle.load(open(os.path.join(latest_models_dir,"SpiceJet.pkl"), "rb"))
+       Multiplecarriers = pickle.load(open(os.path.join(latest_models_dir,"Multiplecarriers.pkl"), "rb"))
+       GoAir = pickle.load(open(os.path.join(latest_models_dir,"GoAir.pkl"), "rb"))
+       Vistara = pickle.load(open(os.path.join(latest_models_dir,"Vistara.pkl"), "rb"))
+       logging.info("Loading Complete.")
 except Exception as e:
        FlightFareException(e, sys)
 

@@ -7,3 +7,8 @@ matplotlib
 seaborn
 statsmodels
 openpyxl
+pymongo
+python-dotenv
+pyyaml
+dill
+-e .
