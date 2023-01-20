@@ -14,14 +14,14 @@
 ### Website Link and Screenshots
 [Click here](http://predictflightfare-env.eba-438dqfva.ap-south-1.elasticbeanstalk.com/) to visit the Deployed prediction web page
 
-[Home Page] 
-(https://github.com/tinkuhore/flight_fare_prediction/issues/1#issue-1551210745)
+Home Page
+https://github.com/tinkuhore/flight_fare_prediction/issues/1#issue-1551210745
 
-[Prediction result for all available Airlines]
-(https://github.com/tinkuhore/flight_fare_prediction/issues/1#issuecomment-1398718154)
+Prediction result for all available Airlines
+https://github.com/tinkuhore/flight_fare_prediction/issues/1#issuecomment-1398718154
 
-[Prediction result for any particular Airline]
-(https://github.com/tinkuhore/flight_fare_prediction/issues/1#issuecomment-1398718535)
+Prediction result for any particular Airline
+https://github.com/tinkuhore/flight_fare_prediction/issues/1#issuecomment-1398718535
 
 #
 
