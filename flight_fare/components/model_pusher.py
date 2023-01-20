@@ -42,8 +42,8 @@ class ModelPusher:
             # save objects
             logging.info("Saving models in saved_model dir")
             save_object(file_path=os.path.join(saved_models_path,"gen_pred_model.pkl"), obj=gen_model)
-            save_object(file_path=os.path.join(saved_models_path,"IndiGo.pkl"), obj=IndiGo_model)
-            save_object(file_path=os.path.join(saved_models_path,"AirAsia_mode.pkl"), obj=AirAsia_model)
+            save_object(file_path=os.path.join(saved_models_path,"IndiGo_model.pkl"), obj=IndiGo_model)
+            save_object(file_path=os.path.join(saved_models_path,"AirAsia_model.pkl"), obj=AirAsia_model)
             save_object(file_path=os.path.join(saved_models_path,"Vistara_model.pkl"), obj=Vistara_model)
             save_object(file_path=os.path.join(saved_models_path,"GoAir_model.pkl"), obj=GoAir_model)
             save_object(file_path=os.path.join(saved_models_path,"Multiplecarriers_model.pkl"), obj=Multiplecarriers_model)
