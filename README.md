@@ -14,7 +14,7 @@
 ### Website Link and Screenshots
 [Click here](http://predictflightfare-env.eba-438dqfva.ap-south-1.elasticbeanstalk.com/) to visit the Deployed prediction web page
 
-Home Page 
+Home Page
 https://github.com/tinkuhore/flight_fare_prediction/issues/1#issue-1551210745
 
 Prediction result for all available Airlines
