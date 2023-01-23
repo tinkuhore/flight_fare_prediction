@@ -41,7 +41,7 @@ def predict():
         if type(result) is dict:
             entry = {"Airline" :result.keys(), "Fare (INR)":result.values()}
             data = pd.DataFrame(data=entry)
-            data.sort_values(by="Fare (INR)", ascending=True, inplace=True)
+            data.sort_values(by="Fare (INR)", ascending=False, inplace=True)
             prediction_text = f"Predicted Flight Fare for available Airlines" 
         
         elif type(result) is float:
