@@ -1,5 +1,5 @@
 ### Flight Fare Prediction
-
+Using the Dataset of flight fares for different routes throughout the year, a Model is built and trained to predict the approx fare for any particular route.
 #
 
 ### Software and Tools Requirement
